@@ -1,0 +1,13 @@
+/// <reference path="typings/knockout/knockout.d.ts" />
+/// <reference path="typings/knockout.mapping/knockout.mapping.d.ts" />
+/// <reference path="typings/jquery/jquery.d.ts" />
+/// <reference path="typings/bootstrap/bootstrap.d.ts" />
+/// <reference path="../ViewModels/Tables/edittablevm.ts" />
+/// <reference path="../ViewModels/shell.ts" />
+/// <reference path="Bridge.Net/eticadata.d.ts" />
+/// <reference path="Bridge.Net/eticadata.common.d.ts" />
+/// <reference path="Bridge.Net/eticadata.eRP.etiEnums.d.ts" />
+/// <reference path="Bridge.Net/eticadata.services.admin.backstage.editRibbon.d.ts" />
+/// <reference path="Bridge.Net/eticadata.services.admin.backstage.eportals.d.ts" />
+/// <reference path="Bridge.Net/eticadata.services.commercial.labels.d.ts" />
+//# sourceMappingURL=references.js.map

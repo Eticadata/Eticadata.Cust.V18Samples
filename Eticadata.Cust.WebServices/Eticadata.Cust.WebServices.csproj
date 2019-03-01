@@ -214,6 +214,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\AccountingController.cs" />
     <Compile Include="Controllers\CustomerTAController.cs" />
     <Compile Include="Controllers\DigitalAttachmentsController.cs" />
     <Compile Include="Controllers\EntitiesCategoryTAController.cs" />
@@ -230,6 +231,7 @@
     <Compile Include="Helpers\DocumentKey.cs" />
     <Compile Include="Helpers\DocumentResult.cs" />
     <Compile Include="Helpers\Functions.cs" />
+    <Compile Include="Models\Accounting\AccountingMov.cs" />
     <Compile Include="Models\CustomerOrders\myCustomerOrder.cs" />
     <Compile Include="Models\Customers\myCustomer.cs" />
     <Compile Include="Models\EntitiesCategory\EntitiesCategory.cs" />

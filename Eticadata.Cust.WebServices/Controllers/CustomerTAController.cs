@@ -52,7 +52,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                 customer.Localidade = pCustomer.Locality;
                 customer.Postal = pCustomer.PostalCode;
                 customer.Email = pCustomer.Email;
-
+                customer.NumContrib = "502395028";
                 customer.AbrevSubZona = pCustomer.SubZone;
                 customer.ALteraSubZona(pCustomer.SubZone);
 

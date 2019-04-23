@@ -356,13 +356,13 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "C:\ETICADATA\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\bin" /E /Y
-xcopy "$(TargetDir)Eticadata.Cust.*.dll" "C:\ETICADATA\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\bin" /E /Y
+    <PostBuildEvent>xcopy "$(TargetDir)Eticadata.Cust.*.pdb" "D:\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\bin" /E /Y
+xcopy "$(TargetDir)Eticadata.Cust.*.dll" "D:\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\bin" /E /Y
 
 
-xcopy "$(ProjectDir)Client\*.html" "C:\ETICADATA\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\Client\" /E /Y
-xcopy "$(ProjectDir)ViewModels\*.js" "C:\ETICADATA\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\ViewModels" /E /Y
-xcopy "$(ProjectDir)Lang\LangHtml\lang.*.js" "C:\ETICADATA\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\Lang\LangHtml" /E /Y</PostBuildEvent>
+xcopy "$(ProjectDir)Client\*.html" "D:\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\Client\" /E /Y
+xcopy "$(ProjectDir)ViewModels\*.js" "D:\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\ViewModels" /E /Y
+xcopy "$(ProjectDir)Lang\LangHtml\lang.*.js" "D:\Edata.Cust\Projects\V18\ERP.Build\Web.00.Site\Eticadata.Web\Lang\LangHtml" /E /Y</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

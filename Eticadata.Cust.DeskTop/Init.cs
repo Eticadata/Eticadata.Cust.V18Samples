@@ -184,6 +184,44 @@ namespace Eticadata.Cust.DeskTop
             ShowWindow<NewWindow>(false, true);
         }
 
+        //eticadata:Examples.NewTicket/1/1/REPEQ/TITULO
+        [CommandHandler("Examples.NewTicket")]
+        public void NewTicket(object sender, EventArgs e)
+        {
+            try
+            {
+                object globalVar = myWorkItem.RootWorkItem.State[GlobalState.Posicao];
+
+                if (globalVar == null)
+                {
+                    throw new ArgumentNullException("parameters must be defined.");
+                }
+
+                string[] parameters = (string[])globalVar;
+                int customerCode = int.Parse(parameters[0]);
+                int techCode = int.Parse(parameters[1]);
+                string docType = parameters[2];
+                string subject = parameters[3];
+
+                Eticadata.ERP.MovAPVReparacao ticket = myEtiApp.MovimentosAPV.MovAPVRecepcoes.GetNew(myEtiApp.ActiveSeccao.Codigo, docType, myEtiApp.ActiveExercicio.Codigo);
+                ticket.Cabecalho.CodEntidade = customerCode;
+                ticket.AlteraCliente(customerCode);
+                //ticket.Cabecalho.Responsavel = techCode;
+                ticket.Cabecalho.CodFuncionario = techCode;
+
+                ticket.Cabecalho.Titulo = subject;
+
+                myWorkItem.RootWorkItem.State[GlobalState.Posicao] = new string[] { docType, "0", myEtiApp.ActiveExercicio.Codigo, myEtiApp.ActiveSeccao.Codigo };
+                myWorkItem.RootWorkItem.State[GlobalState.PosicaoSingular] = ticket;
+                myWorkItem.RootWorkItem.Commands[CommandsAPVMov.EditarReparacao].Execute();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("NewTicket", ex);
+            }         
+            
+        }
 
         #endregion
     }

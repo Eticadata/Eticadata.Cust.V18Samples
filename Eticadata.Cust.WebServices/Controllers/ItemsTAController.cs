@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Data;
 using System.Reflection;
 using System.Web.Http;
+using System.Linq;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Eticadata.Cust.WebServices.Controllers
 {
@@ -8,6 +12,10 @@ namespace Eticadata.Cust.WebServices.Controllers
     {
         private Models.myItem GetNewItem()
         {
+            var myFamilies = new List<Models.myFamilies>();
+            myFamilies.Add(new Models.myFamilies() { Code = "F1" });
+            myFamilies.Add(new Models.myFamilies() { Code = "F3" });
+
             Models.myItem item = new Models.myItem()
             {
                 Code = "ART2",
@@ -19,6 +27,7 @@ namespace Eticadata.Cust.WebServices.Controllers
                 MeasureOfStock = "UN",
                 MeasureOfSale = "UN",
                 MeasureOfPurchase = "UN",
+                Families = myFamilies,
             };
 
             return item;
@@ -33,8 +42,8 @@ namespace Eticadata.Cust.WebServices.Controllers
             var errorDescription = "";
 
             try
-            {                
-                //pItem = GetNewItem();
+            {
+                //string output = JsonConvert.SerializeObject(GetNewItem());
 
                 var item = Eti.Aplicacao.Tabelas.Artigos.Find(pItem.Code);
 
@@ -57,6 +66,22 @@ namespace Eticadata.Cust.WebServices.Controllers
                     item.CodigoInterno = Eti.Aplicacao.Tabelas.Artigos.DaCodigoInterno();
                 }
 
+                pItem.Families.ForEach(f =>
+                {
+
+                    var familyCode = f.Code;
+                    var family = Eti.Aplicacao.Tabelas.Familias.Find(familyCode);                    
+                    var newLineNumber = item.get_LinhaCodigoTpNivel(family.CodTpFamilia);
+
+                    item.set_Familia(newLineNumber, familyCode);
+                });
+
+                pItem.PricesLines.ForEach(l =>
+                {
+                    item.set_PrecoNumLin(l.Number, l.SalePrice);
+                    item.set_MoedaNumLin(l.Number, l.Currency);
+                });
+
                 if (item.Validate())
                 {
                     items.Update(ref item);
@@ -76,6 +101,6 @@ namespace Eticadata.Cust.WebServices.Controllers
 
             return Ok("");
         }
-       
+
     }
 }

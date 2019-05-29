@@ -35,5 +35,7 @@ namespace Eticadata.Cust.WebServices.Models
         public int Number { get; set; } = 0;
         public double SalePrice { get; set; } = 0;
         public string Currency { get; set; } = "EUR";
+
+        public string VATIncluded { get; set; } = "0";
     }
 }
